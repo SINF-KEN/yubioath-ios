@@ -4,6 +4,7 @@
 //
 //  Created by Jens Utbult on 2024-08-22.
 //  Copyright © 2024 Yubico. All rights reserved.
+//  Copyright © 2026 Kenzi Voyer.
 //
 
 

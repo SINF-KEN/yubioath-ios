@@ -16,10 +16,10 @@
 
 import SwiftUI
 
-class NotificationsViewModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
+@Observable class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate {
 
-    @Published var showPIVTokenView: Bool = false
-    @Published var presentDisableOTP: Bool = false
+    var showPIVTokenView: Bool = false
+    var presentDisableOTP: Bool = false
     var userInfo: [AnyHashable: Any]?
     
     override init() {

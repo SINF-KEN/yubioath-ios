@@ -32,7 +32,7 @@ class TokenSession: TKTokenSession, TKTokenSessionDelegate {
     var signSessionEndTime = Date(timeIntervalSinceNow: -10) // create endTime in the past to force recreation of endTime when signing starts
     var decryptSessionEndTime = Date(timeIntervalSinceNow: -10) // create endTime in the past to force recreation of endTime when decryption starts
     
-    // These cases match the YKFPIVKeyType in the SDK
+    // These cases match TokenKeyType in the app
     enum KeyType: UInt8 {
         case rsa1024 = 0x06
         case rsa2048 = 0x07
@@ -278,4 +278,4 @@ class TokenSession: TKTokenSession, TKTokenSessionDelegate {
     }
 }
 
-extension String: Error {}
+extension String: @retroactive Error {}

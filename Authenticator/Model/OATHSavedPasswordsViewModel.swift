@@ -17,16 +17,14 @@
 
 import OSLog
 
-class OATHSavedPasswordsViewModel: ObservableObject {
+@Observable class OATHSavedPasswordsViewModel {
 
-    @Published var state: ResetState = .ready
+    var state: ResetState = .ready
     
     enum ResetState: Equatable {
         case ready, success, error(String)
     }
     
-    private let connection = Connection()
-
     func clearPasswords() {
         
         let passwordPreferences = PasswordPreferences()

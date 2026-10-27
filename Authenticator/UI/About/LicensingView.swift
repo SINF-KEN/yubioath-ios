@@ -30,7 +30,7 @@ struct LicensingView: View {
 extension LicensingView {
     private func licensingText() -> AttributedString {
         guard let filepath = Bundle.main.path(forResource: "Licensing", ofType: "md"),
-              let licensingMarkdown = try? String(contentsOfFile: filepath) else { fatalError() }
+              let licensingMarkdown = try? String(contentsOfFile: filepath, encoding: .utf8) else { fatalError() }
         return try! AttributedString(markdown: licensingMarkdown, options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace))
     }
 }

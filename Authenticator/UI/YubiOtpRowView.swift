@@ -19,7 +19,7 @@ import SwiftUI
 
 struct YubiOtpRowView: View {
 
-    @EnvironmentObject var toastPresenter: ToastPresenter
+    @Environment(ToastPresenter.self) var toastPresenter
     var otp: String
     
     var body: some View {

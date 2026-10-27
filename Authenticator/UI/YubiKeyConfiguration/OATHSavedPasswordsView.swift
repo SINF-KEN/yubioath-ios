@@ -17,7 +17,7 @@ import SwiftUI
 
 struct OATHSavedPasswordsView: View {
     
-    @StateObject var model = OATHSavedPasswordsViewModel()
+    @State var model = OATHSavedPasswordsViewModel()
     @State var presentConfirmAlert = false
     @State var presentErrorAlert = false
     @State var errorMessage: String? = nil
@@ -57,7 +57,7 @@ struct OATHSavedPasswordsView: View {
             }
         })
         .alert(errorMessage ?? String(localized: "Unknown error"), isPresented: $presentErrorAlert, actions: { })
-        .onChange(of: model.state) { state in
+        .onChange(of: model.state) { _, state in
             withAnimation {
                 switch state {
                 case .ready:

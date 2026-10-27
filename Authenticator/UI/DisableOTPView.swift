@@ -18,9 +18,9 @@ import SwiftUI
 
 struct DisableOTPView: View {
 
-    @EnvironmentObject var notificationsViewModel: NotificationsViewModel
-    @EnvironmentObject var mainViewModel: MainViewModel
-    @StateObject var model = DisableOTPModel()
+    @Environment(NotificationsViewModel.self) var notificationsViewModel
+    @Environment(MainViewModel.self) var mainViewModel
+    @State var model = DisableOTPModel()
 
     var body: some View {
         ScrollView {
@@ -55,18 +55,17 @@ struct DisableOTPView: View {
             .padding(30)
             .accentColor(Color(UIColor.yubiBlue))
             .task {
+                model.checkConfigurationLocked()
                 while !Task.isCancelled {
                     try? await Task.sleep(nanoseconds: 500_000_000)
-                    if OATHSessionHandler.shared.smartCardConnection == nil {
-                        await MainActor.run {
-                            mainViewModel.presentDisableOTP = false
-                            notificationsViewModel.presentDisableOTP = false
-                        }
+                    if ConnectionManager.shared.wiredConnection == nil {
+                        mainViewModel.presentDisableOTP = false
+                        notificationsViewModel.presentDisableOTP = false
                         break
                     }
                 }
             }
-            .onChange(of: model.keyIgnored) { value in
+            .onChange(of: model.keyIgnored) { _, value in
                 if value {
                     mainViewModel.presentDisableOTP = false
                     notificationsViewModel.presentDisableOTP = false

@@ -47,24 +47,6 @@ extension UIColor {
         }
     }
     
-    static var yubiBlue: UIColor {
-        get {
-            guard let color = UIColor(named: "YubiBlue") else {
-                return UIColor.gray
-            }
-            return color
-        }
-    }
-    
-    static var yubiGreen: UIColor {
-        get {
-            guard let color = UIColor(named: "YubiGreen") else {
-                return UIColor.gray
-            }
-            return color
-        }
-    }
-    
     static let colorSetForAccountIcons = [UIColor(named: "Color1"),
                                           UIColor(named: "Color2"),
                                           UIColor(named: "Color3"),

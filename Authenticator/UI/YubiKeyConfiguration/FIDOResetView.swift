@@ -22,7 +22,7 @@ struct FIDOResetView: View {
     
     var completion: (() -> Void)
     @Environment(\.dismiss) private var dismiss
-    @StateObject var model = FIDOResetViewModel()
+    @State var model = FIDOResetViewModel()
     
     @State var presentConfirmAlert = false
     @State var presentErrorAlert = false
@@ -71,7 +71,7 @@ struct FIDOResetView: View {
                 Text("OK")
             }
         })        
-        .onChange(of: model.state) { _ in
+        .onChange(of: model.state) { _, _ in
             updateState()
         }
         .onAppear() {

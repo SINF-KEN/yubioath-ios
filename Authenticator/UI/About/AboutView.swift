@@ -59,6 +59,12 @@ struct AboutView: View {
                         ListIconView(image: Image(systemName: "list.clipboard"), color: Color(.systemGreen))
                         Text("Version history")
                     }
+                    NavigationLink {
+                        AppIconView()
+                    } label: {
+                        ListIconView(image: Image(systemName: "app.badge"), color: Color(.systemGreen), padding: 5)
+                        Text("App icon")
+                    }
                     Button {
                         UIApplication.shared.open(URL(string: "https://www.yubico.com/support/terms-conditions/yubico-license-agreement/")!)
                     } label: {

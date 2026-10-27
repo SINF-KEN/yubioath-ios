@@ -29,7 +29,7 @@ class FavoritesStorage: NSObject {
         }.compactMap {
             $0
         }.map { data in
-            try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? Set<String>
+            try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSSet.self, NSString.self], from: data) as? Set<String>
         }.compactMap {
             $0
         }.flatMap {
@@ -58,7 +58,7 @@ class FavoritesStorage: NSObject {
     
     func readFavorites() -> Set<String> {
         guard let encodedData = UserDefaults.standard.data(forKey: "Favorites"),
-              let favorites = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(encodedData) as? Set<String> else {
+              let favorites = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSSet.self, NSString.self], from: encodedData) as? Set<String> else {
             return Set<String>()
         }
         return favorites

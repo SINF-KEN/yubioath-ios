@@ -18,7 +18,7 @@ import Foundation
 import LocalAuthentication
 
 extension UIViewController {
-    static let PasswordUserDefaultsKey = "PasswordSaveType"
+    nonisolated static let PasswordUserDefaultsKey = "PasswordSaveType"
  
     /*! Show error dialog to notify if some operation couldn't be executed
      */

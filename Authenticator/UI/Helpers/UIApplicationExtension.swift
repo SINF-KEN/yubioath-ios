@@ -18,10 +18,10 @@ import Foundation
 
 extension UIApplication {
     
-    static var appVersion: String {
+    nonisolated static var appVersion: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
-    static var appBuildNumber: String {
+    nonisolated static var appBuildNumber: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     }
 }

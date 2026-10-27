@@ -36,7 +36,7 @@ import LocalAuthentication
  */
 let APP_ID = "LQA3CS5MM7"
 
-protocol SecureStoreQueryable {
+nonisolated protocol SecureStoreQueryable: Sendable {
     func setUpQuery(useAuthentication: Bool) -> [String: Any]
 }
 
@@ -46,7 +46,7 @@ protocol SecureStoreQueryable {
  Access group is currently not used,
  but potentially can be used if we planning to share this keychain with another application (e.g. YubiKey manager)
  */
-public struct PasswordQueryable {
+nonisolated public struct PasswordQueryable {
     let service: String
     let accessGroup: String?
 
@@ -56,7 +56,7 @@ public struct PasswordQueryable {
     }
 }
 
-extension PasswordQueryable: SecureStoreQueryable {
+nonisolated extension PasswordQueryable: SecureStoreQueryable {
     func setUpQuery(useAuthentication: Bool) -> [String: Any] {
         var query: [String: Any] = [:]
         query[String(kSecClass)] = kSecClassGenericPassword

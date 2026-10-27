@@ -17,7 +17,7 @@
 import Foundation
 import CommonCrypto
 
-extension SecCertificate: Equatable {
+nonisolated extension SecCertificate: @retroactive Equatable {
     
     var commonName: String? {
         var name: CFString?

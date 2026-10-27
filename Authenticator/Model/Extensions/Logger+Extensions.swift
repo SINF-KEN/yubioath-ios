@@ -16,7 +16,7 @@
 
 import OSLog
 
-public extension Logger {
+nonisolated public extension Logger {
     private static let subsystem = Bundle.main.bundleIdentifier!
 
     static let ui = Logger(subsystem: subsystem, category: "UI")

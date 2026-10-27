@@ -27,14 +27,11 @@ struct FrameReaderModifier: ViewModifier  {
     @Binding var frame: CGRect
     
     func body(content: Content) -> some View {
-        content.background(
-            GeometryReader { geometry -> Color in
-                DispatchQueue.main.async {
-                    frame = geometry.frame(in: CoordinateSpace.global)
-                }
-                return Color.clear
-            }
-        )
+        content.onGeometryChange(for: CGRect.self) { geometry in
+            geometry.frame(in: CoordinateSpace.global)
+        } action: { newFrame in
+            frame = newFrame
+        }
     }
 }
 
@@ -49,14 +46,11 @@ struct SizeReaderModifier: ViewModifier  {
     @Binding var size: CGSize
     
     func body(content: Content) -> some View {
-        content.background(
-            GeometryReader { geometry -> Color in
-                DispatchQueue.main.async {
-                    size = geometry.size
-                }
-                return Color.clear
-            }
-        )
+        content.onGeometryChange(for: CGSize.self) { geometry in
+            geometry.size
+        } action: { newSize in
+            size = newSize
+        }
     }
 }
 
